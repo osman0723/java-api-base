@@ -1,7 +1,8 @@
+@apitest
 Feature: jsonplace holder suite
 
   Background:
-    * url "https://jsonplaceholder.typicode.com"
+    * baseURL
 
   Scenario: get a specicific resourse with id
     When param '{"id" : "3"}'
@@ -12,6 +13,8 @@ Feature: jsonplace holder suite
       When request new resource
       And method post "/posts"
       Then status should be 201
+
+      
 
 
 

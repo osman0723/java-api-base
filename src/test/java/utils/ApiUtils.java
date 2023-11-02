@@ -11,10 +11,9 @@ public class ApiUtils {
     public static Response response;
 
 
-    public static RequestSpecification setRequest(String reqBody){
+    public static void setRequest(String reqBody){
 
         request = given().body(reqBody);
-        return request;
     }
 
     public static void getMethod(String endpoint){
@@ -32,10 +31,10 @@ public class ApiUtils {
     public static void assertStatus(int expectedStatus){
        Assert.assertEquals(expectedStatus, response.getStatusCode());
     }
-
-
-
-
-
-
+    public static void setParam(String key, int value){
+        request = given().param(key, value);
+    }
+    public static void setParam(String key, String value){
+        request = given().param(key, value);
+    }
 }

@@ -6,9 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import utils.ApiUtils;
-
-
-import static io.restassured.RestAssured.given;
+import utils.JsonReader;
 
 public class MyStepdefs extends ApiUtils {
 
@@ -16,10 +14,9 @@ public class MyStepdefs extends ApiUtils {
     public void url() {
         RestAssured.baseURI = baseURL;
     }
-    @When("param {string}")
-    public void param(String string) {
-        request = given().
-                param("id",3);
+    @When("param {string} = {int}")
+    public void param(String arg0, int arg1) {
+        setParam(arg0, arg1);
     }
     @And("method get {string}")
     public void method_get(String endpoint) {
@@ -31,13 +28,12 @@ public class MyStepdefs extends ApiUtils {
     }
     @And("request new resource")
     public void requestNewResource() {
-        String body = "{ \"title\":\"story\",\"body\":\"osman osman\", \"userId\":\"11\"}";
-        setRequest(body);
+        JsonReader js = new JsonReader("src/test/resources/data/resource.json");
+        setRequest(js.toJSONString());
     }
     @When("method post {string}")
     public void methodPost(String endpoint) {
         postMethod(endpoint);
     }
-
 
 }

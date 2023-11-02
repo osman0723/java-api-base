@@ -5,7 +5,7 @@ Feature: jsonplace holder suite
     * baseURL
 
   Scenario: get a specicific resourse with id
-    When param '{"id" : "3"}'
+    When param "id" = 3
     And method get "/posts"
     Then status should be 200
 

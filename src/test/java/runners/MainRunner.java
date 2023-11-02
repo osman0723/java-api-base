@@ -4,7 +4,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
-@CucumberOptions(features = "src/test/resources/functionalTests",
+@CucumberOptions(features = "src/test/resources/features",
         dryRun = true, glue = "stepDefinitions",
         tags = "@apitest", monochrome = true, plugin = {"html:target/cucumber",
         "json:target/cucumber.json"} )
